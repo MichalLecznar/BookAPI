@@ -31,7 +31,7 @@ public class BookController {
         return bookService.getAllBooks();
     }
 
-    
+
     @GetMapping("/{id}")
     public Book getBook(@PathVariable Long id){
         return bookService.getBookById(id).orElseThrow(() -> {
@@ -39,6 +39,23 @@ public class BookController {
                     HttpStatus.NOT_FOUND, "entity not found"
             );
         });
+    }
+
+    @PostMapping("")
+    public void addBook(@RequestBody Book book){
+        bookService.addBook(book);
+
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteBook(@PathVariable Long id){
+        bookService.deleteBook(id);
+    }
+
+    @PutMapping("")
+    @ResponseBody
+    public void editBook(@RequestBody Book book){
+        bookService.editBook(book);
     }
 
 }
