@@ -29,6 +29,14 @@ public class MockBookService implements BookService{
         this.books = books;
     }
 
+    public static Long getNextId() {
+        return nextId;
+    }
+
+    public static void setNextId(Long nextId) {
+        MockBookService.nextId = nextId;
+    }
+
     public List<Book> getAllBooks(){
         return books;
     }
@@ -54,9 +62,9 @@ public class MockBookService implements BookService{
     @Override
     public void editBook(Book book) {
         if(this.getBookById(book.getId()).isPresent()){
-
+            int index = books.indexOf(this.getBookById(book.getId()).get());
+            books.set(index, book);
         }
     }
-
 
 }
