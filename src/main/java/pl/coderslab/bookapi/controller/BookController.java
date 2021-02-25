@@ -7,7 +7,6 @@ import pl.coderslab.bookapi.model.Book;
 import pl.coderslab.bookapi.model.BookService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/books")
@@ -31,7 +30,6 @@ public class BookController {
         return bookService.getAllBooks();
     }
 
-
     @GetMapping("/{id}")
     public Book getBook(@PathVariable Long id){
         return bookService.getBookById(id).orElseThrow(() -> {
@@ -44,7 +42,6 @@ public class BookController {
     @PostMapping("")
     public void addBook(@RequestBody Book book){
         bookService.addBook(book);
-
     }
 
     @DeleteMapping("/{id}")
@@ -57,5 +54,6 @@ public class BookController {
     public void editBook(@RequestBody Book book){
         bookService.editBook(book);
     }
+
 
 }
